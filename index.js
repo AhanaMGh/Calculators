@@ -10,7 +10,9 @@ function clearDisplay(){
 
 function calc(){
     try{
-        display.value = eval(display.value);
+        let expression = display.value.replace(/%/g, "*0.01*");
+        expression = expression.replace(/\^/g, "**");
+        display.value = eval(expression);
     }
     catch(error){
         display.value = "Error";
